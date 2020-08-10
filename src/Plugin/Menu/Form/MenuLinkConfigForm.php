@@ -313,7 +313,7 @@ class MenuLinkConfigForm extends EntityForm implements MenuLinkFormInterface {
       // The user entered a Drupal path.
       $normal_path = $this->pathAliasManager->getPathByAlias($extracted['path']);
       if ($extracted['path'] != $normal_path) {
-        drupal_set_message($this->t('The menu system stores system paths only, but will use the URL alias for display. %link_path has been stored as %normal_path', [
+        $this->messenger()->addStatus($this->t('The menu system stores system paths only, but will use the URL alias for display. %link_path has been stored as %normal_path', [
               '%link_path' => $extracted['path'],
               '%normal_path' => $normal_path,
             ]));
@@ -330,14 +330,14 @@ class MenuLinkConfigForm extends EntityForm implements MenuLinkFormInterface {
     $saved = $menu_link->save();
 
     if ($saved) {
-      drupal_set_message($this->t('The menu link has been saved.'));
+      $this->messenger()->addStatus($this->t('The menu link has been saved.'));
       $form_state->setRedirect(
         'entity.menu.edit_form',
         array('menu' => $menu_link->getMenuName())
       );
     }
     else {
-      drupal_set_message($this->t('There was an error saving the menu link.'), 'error');
+      $this->messenger()->addStatus($this->t('There was an error saving the menu link.'), 'error');
       $form_state['rebuild'] = TRUE;
     }
   }

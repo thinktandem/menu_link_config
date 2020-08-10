@@ -22,7 +22,7 @@ class MenuController extends ControllerBase {
    *   Returns the menu link creation form.
    */
   public function addLink(MenuInterface $menu) {
-    $menu_link = $this->entityManager()->getStorage('menu_link_config')->create([
+    $menu_link = $this->entityTypeManager()->getStorage('menu_link_config')->create([
         'id' => '',
         'parent' => '',
         'menu_name' => $menu->id(),
@@ -32,7 +32,7 @@ class MenuController extends ControllerBase {
   }
 
   public static function getMenuLink($id) {
-    return (bool) \Drupal::entityManager()->getStorage('menu_link_config')->load($id);
+    return (bool) \Drupal::entityTypeManager()->getStorage('menu_link_config')->load($id);
   }
 
 }

@@ -128,7 +128,7 @@ class MenuLinkConfig extends MenuLinkContent {
    * @todo This could be moved upstream, as it is generic.
    */
   public function getEditRoute() {
-    return $this->getEntity()->urlInfo('edit-form');
+    return $this->getEntity()->toUrl('edit-form');
   }
 
 
