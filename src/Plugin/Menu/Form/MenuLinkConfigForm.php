@@ -9,7 +9,7 @@ namespace Drupal\menu_link_config\Plugin\Menu\Form;
 
 use Drupal\Component\Utility\UrlHelper;
 use Drupal\Core\Access\AccessManagerInterface;
-use Drupal\Core\Entity\EntityManagerInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Menu\Form\MenuLinkFormInterface;
@@ -44,7 +44,7 @@ class MenuLinkConfigForm extends EntityForm implements MenuLinkFormInterface {
   /**
    * The entity manager.
    *
-   * @var \Drupal\Core\Entity\EntityManagerInterface
+   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
    */
   protected $entityManager;
 
@@ -58,7 +58,7 @@ class MenuLinkConfigForm extends EntityForm implements MenuLinkFormInterface {
   /**
    * Constructs a new MenuLinkConfigForm object.
    *
-   * @param \Drupal\Core\Entity\EntityManagerInterface $entity_manager
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_manager
    *   The entity manager.
    * @param \Drupal\Core\Menu\MenuLinkManagerInterface $menu_link_manager
    *   The menu link manager.
@@ -70,7 +70,7 @@ class MenuLinkConfigForm extends EntityForm implements MenuLinkFormInterface {
    * @param \Drupal\Core\Extension\ModuleHandlerInterface $module_handler
    * @param \Drupal\Core\StringTranslation\TranslationInterface $string_translation
    */
-  public function __construct(EntityManagerInterface $entity_manager, MenuLinkManagerInterface $menu_link_manager, MenuParentFormSelectorInterface $menu_parent_form_selector, AccessManagerInterface $access_manager, AccountInterface $account, AliasManagerInterface $alias_manager, ModuleHandlerInterface $module_handler, TranslationInterface $string_translation) {
+  public function __construct(EntityTypeManagerInterface $entity_manager, MenuLinkManagerInterface $menu_link_manager, MenuParentFormSelectorInterface $menu_parent_form_selector, AccessManagerInterface $access_manager, AccountInterface $account, AliasManagerInterface $alias_manager, ModuleHandlerInterface $module_handler, TranslationInterface $string_translation) {
     $this->entityManager = $entity_manager;
     $this->menuLinkManager = $menu_link_manager;
     $this->menuParentSelector = $menu_parent_form_selector;

@@ -9,7 +9,7 @@ namespace Drupal\menu_link_config\Plugin\Menu;
 
 use Drupal\Component\Plugin\Exception\PluginException;
 use Drupal\config_translation\ConfigMapperManagerInterface;
-use Drupal\Core\Entity\EntityManagerInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\menu_link_content\Plugin\Menu\MenuLinkContent;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -48,14 +48,14 @@ class MenuLinkConfig extends MenuLinkContent {
    *   The plugin_id for the plugin instance.
    * @param mixed $plugin_definition
    *   The plugin implementation definition.
-   * @param \Drupal\Core\Entity\EntityManagerInterface $entity_manager
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_manager
    *   The entity manager.
    * @param \Drupal\Core\Language\LanguageManagerInterface $language_manager
    *   The language manager.
    * @param \Drupal\config_translation\ConfigMapperManagerInterface $mapper_manager
    *   The config translation mapper manager.
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityManagerInterface $entity_manager, LanguageManagerInterface $language_manager, ConfigMapperManagerInterface $mapper_manager = NULL) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entity_manager, LanguageManagerInterface $language_manager, ConfigMapperManagerInterface $mapper_manager = NULL) {
     parent::__construct($configuration, $plugin_id, $plugin_definition, $entity_manager, $language_manager);
 
     $this->mapperManager = $mapper_manager;
